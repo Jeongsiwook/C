@@ -1,26 +1,26 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-// f(x) = ax^2 + bx + c °ªÀ» ±¸ÇÏ´Â ÇÔ¼ö
+// f(x) = ax^2 + bx + c ê°’ì„ êµ¬í•˜ëŠ” í•¨ìˆ˜
 double func(double a, double b, double c, double x)
 {
     return a * x * x + b * x + c;
 }
 
-// ÀûºĞ ÇÔ¼ö
+// ì ë¶„ í•¨ìˆ˜
 double integ(double start, double end, double step, double a, double b, double c)
 {
-    double ans = 0;                          // °á°ú º¯¼ö
-    int share = (int)((end - start) / step); // »ç´Ù¸®²ÃÀÇ °¹¼ö º¯¼ö
+    double ans = 0;                          // ê²°ê³¼ ë³€ìˆ˜
+    int share = (int)((end - start) / step); // ì‚¬ë‹¤ë¦¬ê¼´ì˜ ê°¯ìˆ˜ ë³€ìˆ˜
 
-    // Á÷»ç°¢ÇüÀÇ °¹¼ö¸¸Å­ ¹İº¹ÇÏ¸é¼­ »ç´Ù¸®²ÃµéÀÇ ÇÕÀ» ±¸ÇÔ
+    // ì§ì‚¬ê°í˜•ì˜ ê°¯ìˆ˜ë§Œí¼ ë°˜ë³µí•˜ë©´ì„œ ì‚¬ë‹¤ë¦¬ê¼´ë“¤ì˜ í•©ì„ êµ¬í•¨
     for (int i = 0; i < share; i++) {
-        double up = func(a, b, c, start + (step * i));          // À­º¯ º¯¼ö
-        double down = func(a, b, c, start + (step * (i + 1)));  // ¾Æ·§º¯ º¯¼ö
-        ans += (up + down) * step / 2;                          // »ç´Ù¸®²Ã ³ĞÀÌ °ø½Ä
+        double up = func(a, b, c, start + (step * i));          // ìœ—ë³€ ë³€ìˆ˜
+        double down = func(a, b, c, start + (step * (i + 1)));  // ì•„ë«ë³€ ë³€ìˆ˜
+        ans += (up + down) * step / 2;                          // ì‚¬ë‹¤ë¦¬ê¼´ ë„“ì´ ê³µì‹
     }
 
-    // ³ª¸ÓÁö »ç´Ù¸®²Ã
+    // ë‚˜ë¨¸ì§€ ì‚¬ë‹¤ë¦¬ê¼´
     if ((end - start) - (share * step)) {
         double up = func(a, b, c, (end - (end - start - share * step)));
         double down = func(a, b, c, end);
