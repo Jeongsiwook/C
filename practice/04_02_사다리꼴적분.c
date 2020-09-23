@@ -13,7 +13,7 @@ double integ(double start, double end, double step, double a, double b, double c
     double ans = 0;                          // 결과 변수
     int share = (int)((end - start) / step); // 사다리꼴의 갯수 변수
 
-    // 직사각형의 갯수만큼 반복하면서 사다리꼴들의 합을 구함
+    // 사다리꼴의 갯수만큼 반복하면서 사다리꼴들의 합을 구함
     for (int i = 0; i < share; i++) {
         double up = func(a, b, c, start + (step * i));          // 윗변 변수
         double down = func(a, b, c, start + (step * (i + 1)));  // 아랫변 변수
