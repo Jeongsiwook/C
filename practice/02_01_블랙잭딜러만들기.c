@@ -1,6 +1,6 @@
-// ¼ıÀÚÄ«µå(2 ~ 10)ÀÇ °¡Ä¡´Â ÇØ´ç ¼ıÀÚ
-// ±×¸²Ä«µå(J, Q, K)ÀÇ °¡Ä¡´Â 10
-// A Ä«µåÀÇ °¡Ä¡´Â 11(ÆÄ»êÇÏ°Ô    µÉ °æ¿ì 1·Î º¯°æ)
+// ìˆ«ìì¹´ë“œ(2 ~ 10)ì˜ ê°€ì¹˜ëŠ” í•´ë‹¹ ìˆ«ì
+// ê·¸ë¦¼ì¹´ë“œ(J, Q, K)ì˜ ê°€ì¹˜ëŠ” 10
+// A ì¹´ë“œì˜ ê°€ì¹˜ëŠ” 11(íŒŒì‚°í•˜ê²Œ    ë  ê²½ìš° 1ë¡œ ë³€ê²½)
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -9,13 +9,13 @@
 int main()
 {
     char card_name[3];
-    int value = 0; // ´©Àû °¡Ä¡¿¡ ´ëÇÑ º¯¼ö
-    int a_check = 0; // A Ä«µå °¹¼ö È®ÀÎ º¯¼ö
+    int value = 0;      // ëˆ„ì  ê°€ì¹˜ì— ëŒ€í•œ ë³€ìˆ˜
+    int a_check = 0;    // A ì¹´ë“œ ê°¯ìˆ˜ í™•ì¸ ë³€ìˆ˜
 
-    while (card_name[0] != 'X') { // X¸¦ ÀÔ·Â¹ŞÀ¸¸é ÇÁ·Î±×·¥ Á¾·á
-        printf("Ä«µåÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ");
+    while (card_name[0] != 'X') {   // Xë¥¼ ì…ë ¥ë°›ìœ¼ë©´ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
+        printf("ì¹´ë“œì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
         scanf("%2s", card_name);
-        int val = 0; // ÇöÀç °¡Ä¡¿¡ ´ëÇÑ º¯¼ö
+        int val = 0;    // í˜„ì¬ ê°€ì¹˜ì— ëŒ€í•œ ë³€ìˆ˜
 
         switch (card_name[0]) {
         case 'K':
@@ -25,7 +25,7 @@ int main()
             break;
         case 'A':
             val = 11;
-            a_check++; // A°¡ µé¾î¿Ã ¶§ +1
+            a_check++;  // Aê°€ ë“¤ì–´ì˜¬ ë•Œ +1
             break;
         case 'X':
             continue;
@@ -33,36 +33,36 @@ int main()
             val = atoi(card_name);
 
             if ((val < 2) || (val > 10)) {
-                printf("°ªÀ» ¾Ë ¼ö ¾ø½À´Ï´Ù.\n");
+                printf("ê°’ì„ ì•Œ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
                 continue;
             }
         }
-        value += val; // ´©Àû °¡Ä¡¿¡ Ä«µå °ªµé ÀúÀå
+        value += val;   // ëˆ„ì  ê°€ì¹˜ì— ì¹´ë“œ ê°’ë“¤ ì €ì¥
 
         if ((value >= 17) && (value <= 21)) {
-            printf("´©Àû°¡Ä¡: %d\n", value);
-            printf("µôÀ» ¸¶Ä¨´Ï´Ù.\n");
+            printf("ëˆ„ì ê°€ì¹˜: %d\n", value);
+            printf("ë”œì„ ë§ˆì¹©ë‹ˆë‹¤.\n");
             break;
         }
         else if (value > 21) {
-            if (a_check > 0) { // 21À» ÃÊ°úÇßÀ» ¶§ A Ä«µå°¡ ÀÖ´Â Áö È®ÀÎ
+            if (a_check > 0) {  // 21ì„ ì´ˆê³¼í–ˆì„ ë•Œ A ì¹´ë“œê°€ ìˆëŠ” ì§€ í™•ì¸
                 value -= 10;
                 a_check--;
-                printf("´©Àû°¡Ä¡: %d\n", value);
+                printf("ëˆ„ì ê°€ì¹˜: %d\n", value);
                 if ((value >= 17) && (value <= 21)) {
-                    printf("µôÀ» ¸¶Ä¨´Ï´Ù.\n");
+                    printf("ë”œì„ ë§ˆì¹©ë‹ˆë‹¤.\n");
                     break;
                 }
                 continue;
             }
             else {
-                printf("´©Àû°¡Ä¡: %d\n", value);
-                printf("ÆÄ»êÇÏ¿´½À´Ï´Ù.\n");
+                printf("ëˆ„ì ê°€ì¹˜: %d\n", value);
+                printf("íŒŒì‚°í•˜ì˜€ìŠµë‹ˆë‹¤.\n");
                 break;
             }
         }
         else {
-            printf("´©Àû°¡Ä¡: %d\n", value);
+            printf("ëˆ„ì ê°€ì¹˜: %d\n", value);
         }
     }
     return 0;
