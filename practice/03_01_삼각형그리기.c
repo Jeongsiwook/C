@@ -13,10 +13,14 @@ int main()
     }
 
     for (int i = 0; i < num; i++) {
-        for (int j = 0; j < num - 1 - i; j++) { // 빈칸 부분
+        
+        // 빈칸 부분
+        for (int j = 0; j < num - 1 - i; j++) { 
             printf(" ");
         }
-        for (int j = 0; j < (2 * i + 1); j++) { // * 부분
+        
+        // * 부분
+        for (int j = 0; j < (2 * i + 1); j++) { 
             printf("*");
         }
         printf("\n");
